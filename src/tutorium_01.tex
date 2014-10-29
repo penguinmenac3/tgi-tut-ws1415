@@ -506,21 +506,19 @@ Was sind hier jeweils:
 
 \begin{frame}
 \frametitle{Aufgabe}
-Bestimmen Sie  mit dem im Beweis von Satz 2.14 verwendeten Verfahren die 
-reguläre Sprache, die folgender deterministische endliche Automat erkennt:
+Bestimmen Sie nach der Methode aus der Vorlesung (Satz 2.14 im Skript zur Vorlesung) einen
+regulären Ausdruck für die von folgendem Automaten erkannte Sprache. Geben Sie dabei alle benötigten Zwischenergebnisse an und lesen Sie nur Sprachen der Form $L_{r,0,t}$ direkt ab.
+\\ Hinweis: Wenn Sie frühzeitig $L_{q_3, 2, q_2}$ berechnen, können Sie sich einige Rechenschritte sparen.
 \begin{figure}[H]
 \begin{center}
 \begin{tikzpicture}[scale=0.6,node distance=1.9cm,shorten >=1pt,auto]
-\node[state,initial]   (q_1)                {$q_1$};
-\node[state] (q_2) [right of=q_1] {$q_2$};
-\node[state,accepting] (q_3) [right of=q_2] {$q_3$};
-
-\path[->]	(q_1) 	edge 			node {$a$} 		(q_2)
-			edge [loop above]	node {$b$}		()
-		(q_2)	edge [bend right]	node [above] {$a$}		(q_1)
-			edge 			node {$b$}		(q_3)
-		(q_3)	edge [loop above]	node {$b$}		()
-			edge [bend left]	node {$a$}		(q_1);
+\node[state,initial]	(q_1)				 	{$q_1$};
+\node[state,accepting]	(q_2)	[right of=q_1]	{$q_2$};
+\node[state] 			(q_3)	[right of=q_2]	{$q_3$};
+\path[->]	(q_1) 	edge [bend left]	node [above] {$a,b$} 	(q_2)
+			(q_2)	edge [bend left]	node [below] {$b$}		(q_1)
+			(q_2)	edge 				node {$a$}				(q_3)
+			(q_3)	edge [loop above]	node {$a,b$}			(q_3);
 \end{tikzpicture}
 \end{center}
 \end{figure}
@@ -581,7 +579,7 @@ Welche der folgenden Sprachen sind regulär? Begründen Sie Ihre Antwort.
 
 \begin{enumerate}
 \item Die Menge aller Wörter über $\{0, 1\}$, sodass auf jede Null eine Eins folgt
-\item $L_1 = \{ww^R | w \in \{a,b\}^*\}$, wobei $w^R$ das "Spiegelwort" zu $w$ ist (Sprache der Palindrome gerader Länge)
+\item $L_1 = \{ww^R | w \in \{a,b\}^*\}$, wobei $w^R$ das 'Spiegelwort' zu $w$ ist (Sprache der Palindrome gerader Länge)
 \item $L_2 = \{a^ib^jc^k \, | \, i < j < k\}$.
 \end{enumerate}
 
@@ -596,11 +594,11 @@ Welche der folgenden Sprachen sind regulär? Begründen Sie Ihre Antwort.
 \begin{center}\includegraphics[height=0.8\textheight]{images/regular_expressions.png}\end{center}
 
 \scriptsize{\begin{quote}
-Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems. -- Jamie Zawinski
+Some people, when confronted with a problem, think 'I know, I'll use regular expressions.' Now they have two problems. -- Jamie Zawinski
 \end{quote}}
 
 \tiny{\begin{quote}
-Some people, when confronted with a problem, think “I know, I’ll quote Jamie Zawinski.” Now they have two problems. -- Mark Pilgrim
+Some people, when confronted with a problem, think 'I know, I’ll quote Jamie Zawinski.' Now they have two problems. -- Mark Pilgrim
 \end{quote}}
 \end{frame}
 
